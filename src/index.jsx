@@ -22,7 +22,6 @@ export default function Index() {
             <li><a href="/contact" className="text-custom-coklat">Kategori</a></li>
             <li><a href="/contact" className="text-custom-coklat">Tentang Kami</a></li>
             <li><a href="/contact" className="text-custom-coklat">Kontak Kami</a></li>
-
           </ul>
         </nav>
         <h1 className="text-custom-coklat ">keranjang</h1>

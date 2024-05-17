@@ -12,6 +12,8 @@ import Register from './pages/user/register.jsx';
 import ResetPassword from './pages/user/resetPassword.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import 'typeface-poppins';
+import ErrorPage from './errorPage.jsx';
+import Produk from './pages/user/produk.jsx';
 
 
 const queryClient = new QueryClient({
@@ -26,21 +28,26 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={createBrowserRouter([
+        {
+          path: '*',
+          element: <ErrorPage />
+        },
         { path: '/', 
           element: <Index />, 
-          errorElement: <Index /> },
+          errorElement: <ErrorPage /> },
         { path: '/loginUser', 
           element: <LoginUser />, 
-          errorElement: <LoginUser /> },
+          errorElement: <ErrorPage /> },
         { path: '/loginAdmin', 
           element: <LoginAdmin />, 
-          errorElement: <LoginAdmin /> },
+          errorElement: <ErrorPage /> },
         { path: '/register', 
           element: <Register />, 
-          errorElement: <Register /> },
+          errorElement: <ErrorPage /> },
         { path: '/resetPassword', 
           element: <ResetPassword />, 
-          errorElement: <ResetPassword /> },
+          errorElement: <ErrorPage /> },
+        { path: '/produk', element: <Produk />}
       ])}>
       </RouterProvider>
     </QueryClientProvider>

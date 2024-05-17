@@ -1,10 +1,8 @@
  const Button = (props) => {
-    const { type, onChange, onClick, variant } = props;
+    const { type, variant } = props;
     return (
       <button className={variant} 
-      type={type} 
-      onChange={onChange}
-      onClick={onClick}>
+      type={type}>
         {props.children}
       </button> 
     );

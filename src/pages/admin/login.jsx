@@ -22,6 +22,7 @@ export default function LoginAdmin() {
                 navigate('/'); 
             } catch (error) {
                 console.error('Login error:', error);
+                
             }
         },
         validate: (values) => {
