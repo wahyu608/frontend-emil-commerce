@@ -33,7 +33,7 @@ export default function Stock() {
                 <th className="text-left py-3 px-4 uppercase text-custom-coklat font-bold text-sm">Total</th>
                 <th className="text-left py-3 px-4 uppercase text-custom-coklat font-bold text-sm">Aksi</th>
               </tr>
-            </thead>
+            </thead>            
             <tbody className="text-custom-coklat bg-gray-200">
               <tr>
                 <td className="text-left py-3 pl-4">Lian</td>
