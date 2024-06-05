@@ -31,8 +31,7 @@ export default function Home() {
   }));
   useEffect(() => {
     checkAuth();
-    fetchProduk();
-    fetchProdukDetail(210001);
+    fetchProduk();  
   }, [token, checkAuth, fetchProduk, fetchProdukDetail]);
   console.log(product);
   return (
