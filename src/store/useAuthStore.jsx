@@ -43,7 +43,7 @@ const useAuthStore = create((set) => ({
     const token = Cookies.get("accessToken");
     if (token) {
       set({ token });
-      scheduleTokenRenewal(token);
+      scheduleTokenRenewal(token); 
     } else {
 
     }
