@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
   darkMode: 'class',
   content: [
     "./index.html",
@@ -8,7 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'poppins': ['Poppins']
+        'poppins': ['Poppins', 'sans-serif'],
       },
       colors: {
         'custom-coklat': '#685C4D',
@@ -16,4 +18,5 @@ export default {
     },
   },
   plugins: [],
-}
+});
+
