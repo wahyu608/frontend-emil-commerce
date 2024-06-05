@@ -45,26 +45,5 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-axiosInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  async (error) => {
-    const originalRequest = error.config;
-    const { renewToken } = useAuthStore.getState();
-
-    if (error.response.status === 403 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      await renewToken();
-      const newToken = Cookies.get("accessToken");
-      axiosInstance.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${newToken}`;
-      originalRequest.headers["Authorization"] = `Bearer ${newToken}`;
-      return axiosInstance(originalRequest);
-    }
-    return Promise.reject(error);
-  }
-);
 
 export default axiosInstance;
