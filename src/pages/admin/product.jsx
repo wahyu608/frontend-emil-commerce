@@ -42,7 +42,7 @@ export default function Product() {
               </tr>
             </thead>
             <tbody className="text-custom-coklat bg-gray-200">
-            {produk.map((item, index) => (
+              {produk.map((item, index) => (
               <tr key={item.id}>
                 <td className="text-left py-3 pl-4">{index + 1}</td>
                 <td className="text-left py-3 pl-3">
@@ -59,7 +59,7 @@ export default function Product() {
                   <button className="text-red-500 hover:underline ml-2">Delete</button>
                 </td>
               </tr>
-            ))}
+              ))}
             </tbody>
           </table>
           <AddProdukModal 

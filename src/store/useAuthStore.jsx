@@ -2,6 +2,7 @@ import { create } from "zustand";
 import axiosInstance from "../lib/login";
 import Cookies from "js-cookie";
 
+
 const useAuthStore = create((set) => ({
   user: null,
   loading: false,
@@ -15,7 +16,7 @@ const useAuthStore = create((set) => ({
         password,
       });
       const { accessToken, user } = loginResponse.data.data;
-      Cookies.set("accessToken", accessToken, { expires: 720000 });
+      Cookies.set("accessToken", accessToken, { expires: 1000 });
       set({ user, token: accessToken, loading: false, error: null });
       scheduleTokenRenewal(accessToken);
     } catch (error) {
@@ -43,6 +44,8 @@ const useAuthStore = create((set) => ({
     if (token) {
       set({ token });
       scheduleTokenRenewal(token);
+    } else {
+
     }
   },
   renewToken: async () => {
@@ -64,7 +67,7 @@ const useAuthStore = create((set) => ({
 }));
 
 const scheduleTokenRenewal = (token) => {
-  const expiresIn = 71 * 1000;
+  const expiresIn = 4 * 1000;
   setTimeout(() => {
     const { renewToken } = useAuthStore.getState();
     renewToken();

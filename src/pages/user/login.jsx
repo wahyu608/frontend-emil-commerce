@@ -96,6 +96,7 @@ export default function LoginUser() {
             >
               {loading ? 'Loading...' : 'Login'}
             </Button>
+            
             <Link to="/register" className="text-center">
               Belum punya akun?
             </Link>

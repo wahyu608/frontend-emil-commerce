@@ -33,6 +33,12 @@ export default function Home() {
     checkAuth();
     fetchProduk();
     fetchProdukDetail(210001);
+
+    if (checkAuth) {
+      if (!token) {
+        navigate("/loginUser");
+      }
+    }
   }, [token, checkAuth, fetchProduk, fetchProdukDetail]);
   console.log(product);
   return (

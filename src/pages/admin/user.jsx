@@ -47,6 +47,7 @@ export default function Users() {
               </tr>
             </tbody>
           </table>
+          
           ) : (
             <Outlet />
           )
