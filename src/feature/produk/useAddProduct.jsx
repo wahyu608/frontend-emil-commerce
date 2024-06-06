@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 import validationSchema from "./validationSchema";
-import Kategori from "../../pages/home/kategori";
 
 const useAddProduct = (onSubmit) => {
   return useFormik({
@@ -9,7 +8,8 @@ const useAddProduct = (onSubmit) => {
       name: '',
       price: '',
       description: '',
-      category: '',
+      category_id: [],  
+      weight: '', 
     },
     validationSchema: validationSchema,
     onSubmit: onSubmit,
