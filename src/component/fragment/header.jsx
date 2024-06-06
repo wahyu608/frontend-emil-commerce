@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import useAuthStore from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import { Search, Cart, Person } from "react-bootstrap-icons";
+import useFetchCart from "../../store/useFetchCart";
 
 export default function Header() {
   const navigate = useNavigate();
+  console.log("Menyerah", useFetchCart());
+  const { cart, fetchCart, productAdded } = useFetchCart();
   const { token, logout, checkAuth } = useAuthStore((state) => ({
     token: state.token,
     logout: state.logout,
@@ -13,7 +17,8 @@ export default function Header() {
 
   useEffect(() => {
     checkAuth();
-  }, [checkAuth]);
+    fetchCart();
+  }, [checkAuth, productAdded]);
 
   const handleLogout = () => {
     logout();
@@ -58,17 +63,20 @@ export default function Header() {
         </nav>
         {token ? (
           <div className="flex space-x-4">
-            <Link to="#search" className="hover:text-gray-400">
-              🔍
+            <Link to="#search" className="hover:text-gray-400 mx-2">
+              <Search className="text-[24px]" />
             </Link>
-            <Link to="/cart" className="hover:text-gray-400">
-              🛒
+            <Link to="/cart" className="hover:text-gray-400 mx-2">
+              <div className="flex w-[50px] justify-between">
+                {" "}
+                <Cart className="text-[24px]" /> <p class="font-bold">{cart.qtyTotal ?? 0}</p> 
+              </div>
             </Link>
-            <Link to="#user" className="hover:text-gray-400">
-              👤
+            <Link to="#user" className="hover:text-gray-400 mx-2">
+              <Person className="text-[24px]" />
             </Link>
             <button
-              className="text-white bg-custom-coklat rounded-xl w-auto"
+              className="text-white bg-custom-coklat rounded-xl w-max p-1"
               onClick={handleLogout}
             >
               Logout
