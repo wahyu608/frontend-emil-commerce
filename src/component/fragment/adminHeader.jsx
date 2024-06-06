@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import useAuthStore from '../../store/useAuthStore';
 import { Link } from 'react-router-dom';
+
 export default function AdminHeader() {
-  const { logout} = useAuthStore((state) => ({
+  const { logout } = useAuthStore((state) => ({
     logout: state.logout,
   }));
   const [isOpen, setIsOpen] = useState(false);
@@ -16,13 +17,12 @@ export default function AdminHeader() {
   };
 
   const handleLogout = () => {
-    checkAuth();
     logout();
   };
 
   return (
     <header className="w-full items-center bg-white py-2 px-6 hidden sm:flex">
-      <div className="w-1/2"> EMIL FURNITURE</div>
+      <div className="w-1/2">EMIL FURNITURE</div>
       <div className="relative w-1/2 flex justify-end">
         <button 
           onClick={toggleDropdown} 

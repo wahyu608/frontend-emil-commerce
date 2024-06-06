@@ -177,7 +177,6 @@ export default function Users() {
               </tbody>
             </table>
           </div>
-        
         {/* Pagination Section */}
         <div className="mt-8">
           {loading == false &&
@@ -194,6 +193,7 @@ export default function Users() {
                 {paginationButton.text}
               </button>
             ))}
+
         </div>
       </div>
     </div>
