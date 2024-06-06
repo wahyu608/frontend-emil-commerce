@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../../component/fragment/header";
 import Footer from "../../component/fragment/footer";
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import useFetchProduk from "../../store/useFetchProduk.jsx";
 import useAuthStore from "../../store/useAuthStore.jsx";
 import { useLocation, Link } from "react-router-dom";
@@ -11,6 +11,7 @@ import useFetchProdukDetail from "../../store/useFetchProdukDetail.jsx";
 import ruangtamu from "../../assets/ruangtamu.webp";
 import home from "../../assets/home.png";
 import sofa from "../../assets/sofa.png";
+import Cookies from "js-cookie";
 export default function Home() {
   const location = useLocation();
   const isHomeRoute = location.pathname === "/home";
@@ -29,10 +30,19 @@ export default function Home() {
     loading: state.loading,
     error: state.error,
   }));
+
+  
+
   useEffect(() => {
+
     checkAuth();
     
     fetchProduk();  
+
+    if (!Cookies.get("accessToken")) navigate("/loginUser");  
+    
+    fetchProduk(1, 10, "id", "asc");
+
   }, [token, checkAuth, fetchProduk, fetchProdukDetail]);
   console.log(product);
   return (
@@ -62,7 +72,7 @@ export default function Home() {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="h-40 bg-gray-300 mb-4"
+                      className="h-40 bg-gray-300 mb-4 rounded-md"
                     />
                     <h3 className="text-lg font-bold mb-2">{item.name}</h3>
                     <p className="text-gray-700">{item.price}</p>
