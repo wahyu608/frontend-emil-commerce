@@ -34,9 +34,15 @@ export default function Home() {
   
 
   useEffect(() => {
+
+    checkAuth();
+    
+    fetchProduk();  
+
     if (!Cookies.get("accessToken")) navigate("/loginUser");  
     
     fetchProduk(1, 10, "id", "asc");
+
   }, [token, checkAuth, fetchProduk, fetchProdukDetail]);
   console.log(product);
   return (

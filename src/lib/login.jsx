@@ -10,7 +10,6 @@ const axiosInstance = axios.create({
   baseURL: "https://wily-rafaelia-aryantara-e4e3f18c.koyeb.app",
   withCredentials: true
 });
-
 async function renewToken() {
   try {
     const response = await fetch("https://wily-rafaelia-aryantara-e4e3f18c.koyeb.app/auth/renew", {
@@ -26,7 +25,6 @@ async function renewToken() {
     window.location.href = "/loginUser";
   }
 }
-
 axiosInstance.interceptors.request.use(
   async (config) => {
     let token = Cookies.get("accessToken");
@@ -35,7 +33,6 @@ axiosInstance.interceptors.request.use(
       await renewToken();
       token = Cookies.get("accessToken");
     }
-
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
