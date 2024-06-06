@@ -21,27 +21,27 @@ export default function Stock() {
 
   const handleUpdateStock = async (stockId, newData) => {
     await updateStock(stockId, newData);
-    fetchStock(); // Perbarui data stok setelah pembaruan
+    fetchStock(); 
   };
 
   const handleDeleteStock = async (stockId) => {
     await deleteStock(stockId);
-    fetchStock(); // Perbarui data stok setelah penghapusan
+    fetchStock(); 
   };
 
   const handleCommitStock = async (stockId) => {
     await commitStock(stockId);
-    fetchStock(); // Perbarui data stok setelah komitmen
+    fetchStock(); 
   };
 
   const handleStockIn = async (data) => {
     await stockIn(data);
-    fetchStock(); // Perbarui data stok setelah input stok
+    fetchStock(); 
   };
 
   const handleStockOut = async (data) => {
     await stockOut(data);
-    fetchStock(); // Perbarui data stok setelah output stok
+    fetchStock(); 
   };
 
 
